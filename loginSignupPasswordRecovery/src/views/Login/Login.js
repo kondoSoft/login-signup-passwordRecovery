@@ -5,13 +5,13 @@ import { Button, View, SafeAreaView } from 'react-native'
 import { exportDefaultSpecifier } from "@babel/types"
 const isIOS = Platform.OS === 'ios'
 
-const Login = () => {
+const Login = ({ navigation }) => {
 
     return (
 
-        <SafeAreaView style={{ flex: 1,justifyContent:'space-around' }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'space-around' }}>
             <View
-                style={{ }}
+                style={{}}
             >
                 <Input
                     label='name user'
@@ -19,10 +19,6 @@ const Login = () => {
                 <Input
                     label='Password'
 
-                />
-                <Button
-                    title='Log in'
-                    onPress={() => console.log('click')}
                 />
                 <CheckBox
                     title='Remember email'
@@ -35,8 +31,16 @@ const Login = () => {
                     onPress={() => console.log('click')}
                 />
                 <Button
-                    title='sign up'
+                    title='Log in'
                     onPress={() => console.log('click')}
+                />
+                <Button
+                    title='sign up'
+                    onPress={() => navigation.navigate('sign up')}
+                />
+                <Button
+                    title='forgot password'
+                    onPress={() => navigation.navigate('forgot password')}
                 />
             </View>
 
