@@ -11,7 +11,8 @@ const SingUp = () => {
      
             <SafeAreaView style={{flex:1,}}> 
                 <View
-                    style={{  }}>
+                    style={{  }}
+                >
                     <Input
                         label='name user'
                     />

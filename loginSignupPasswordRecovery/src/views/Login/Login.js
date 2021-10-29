@@ -11,7 +11,8 @@ const Login = () => {
 
         <SafeAreaView style={{ flex: 1,justifyContent:'space-around' }}>
             <View
-                style={{ }}>
+                style={{ }}
+            >
                 <Input
                     label='name user'
                 />
