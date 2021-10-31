@@ -1,23 +1,18 @@
 import React from "react"
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Input, } from 'react-native-elements'
 import { Button, View, SafeAreaView, Text } from 'react-native'
-import { exportDefaultSpecifier } from "@babel/types"
-const isIOS = Platform.OS === 'ios'
+import Wrapper from "../../common/Wrapper"
 
-const ForGotPassword = () => {
+const ForgotPassword = () => {
 
     return (
-
-        <SafeAreaView style={{ flex: 1,justifyContent:'space-around' }}>
+        <Wrapper>
             <View
                 style={{ }}
             >
                 <Text>please insert your email</Text>
-                
                 <Input
                     label='Password'
-
                 />
                 <Button
                     title='Log in'
@@ -25,12 +20,7 @@ const ForGotPassword = () => {
                 />
                 <Text>please check your email </Text>
             </View>
-
-        </SafeAreaView>
-
+        </Wrapper>
     )
-
-
-
 }
-export default ForGotPassword
+export default ForgotPassword

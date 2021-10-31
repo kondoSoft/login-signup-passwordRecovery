@@ -1,9 +1,12 @@
 import React from 'react'
 import { Text } from 'react-native'
+import Wrapper from '../../common/Wrapper'
 
 const Section3 = () => {
     return (
-        <Text>Section3</Text>
+        <Wrapper>
+            <Text>Section3</Text>
+        </Wrapper>
     )
 }
 

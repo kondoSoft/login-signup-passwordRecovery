@@ -1,9 +1,12 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text } from 'react-native-elements'
+import Wrapper from '../../common/Wrapper'
 
 const Home = () => {
     return (
-        <Text>Home</Text>
+        <Wrapper>
+            <Text>Homes</Text>
+        </Wrapper>
     )
 }
 

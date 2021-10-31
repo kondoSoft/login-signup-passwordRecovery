@@ -1,15 +1,12 @@
 import React from "react"
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Input } from 'react-native-elements'
 import { Button, View, SafeAreaView } from 'react-native'
-import { exportDefaultSpecifier } from "@babel/types"
-const isIOS = Platform.OS === 'ios'
+import Wrapper from "../../common/Wrapper"
 
 const SingUp = () => {
 
     return (
-     
-            <SafeAreaView style={{flex:1,}}> 
+            <Wrapper> 
                 <View
                     style={{  }}
                 >
@@ -34,12 +31,7 @@ const SingUp = () => {
                         onPress={() => console.log('click')}
                     />
                 </View>
-
-            </SafeAreaView>
-
+            </Wrapper>
     )
-
-
-
 }
 export default SingUp

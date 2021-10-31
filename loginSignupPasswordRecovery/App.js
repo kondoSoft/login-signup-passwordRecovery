@@ -1,36 +1,67 @@
 import React from 'react';
 import { Icon } from 'react-native-elements'
-import {
-  Text,
-  View,
-} from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './src/views/home/Home';
+import { ThemeProvider } from 'react-native-elements';
+
+
+import Home from './src/views/Home/Home';
 import Section1 from './src/views/section/Section1'
 import Section2 from './src/views/section/Section2'
 import Section3 from './src/views/section/Section3'
-import ForGotPassword from './src/views/ForGotPassword/ForGotPassword'
+import ForGotPassword from './src/views/ForgotPassword/ForgotPassword'
 import Login from './src/views/Login/Login'
-import SignUp from './src/views/signUp/SingUp'
+import SignUp from './src/views/SignUp/SingUp'
+
+import colors from './colors.json'
+
+const theme = {
+  Button: {
+  },
+  Input: {
+    color: colors.MAINTEXT
+  },
+  Text:{
+    style: {
+      color: colors.MAINTEXT
+    }
+  }
+}
+// console.log ('>> ',  DefaultTheme)
+const navTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: colors.MAINTEXT,
+    background: colors.MAIN
+  },
+  headerStyle: {
+    background: colors.MAIN
+  }
+};
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
-const MyStack = () => {
+const LoginStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="login" component={Login} />
-      <Stack.Screen name="sign up" component={SignUp} />
-      <Stack.Screen name="forgot password" component={ForGotPassword} />
-    </Stack.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={({ route }) => ({
+          headerTransparent: true,
+          headerTintColor: colors.MAINTEXT
+        })}>
+        <Stack.Screen name="login" component={Login} />
+        <Stack.Screen name="sign up" component={SignUp} />
+        <Stack.Screen name="forgot password" component={ForGotPassword} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const screenOptions = (route, color) => {
   let iconName;
-
   switch (route.name) {
     case 'Home':
       iconName = 'home'
@@ -48,24 +79,31 @@ const screenOptions = (route, color) => {
   return <Icon name={iconName} color={color} size={24} />;
 }
 
-const App = () => {
-
-
+const MainStack = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color }) => screenOptions(route, color),
+          headerTransparent: true,
+          headerTintColor: colors.MAINTEXT,
         })}>
-        <Tab.Screen name="Home" component={MyStack} />
+        <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="section1" component={Section1} />
         <Tab.Screen name="section2" component={Section2} />
         <Tab.Screen name="section3" component={Section3} />
       </Tab.Navigator>
     </NavigationContainer>
-
   );
 };
+
+const App = () => {
+  const user = true
+  const Stack = !user ? MainStack : LoginStack
+  return <ThemeProvider theme={theme}>
+    <Stack/>
+  </ThemeProvider>
+}
 
 
 

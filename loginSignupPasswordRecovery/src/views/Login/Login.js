@@ -1,24 +1,24 @@
 import React from "react"
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { Input, CheckBox } from 'react-native-elements'
-import { Button, View, SafeAreaView } from 'react-native'
-import { exportDefaultSpecifier } from "@babel/types"
-const isIOS = Platform.OS === 'ios'
+import { Input, CheckBox, Icon } from 'react-native-elements'
+import { Button, View } from 'react-native'
+
+import Wrapper from '../../common/Wrapper'
+import colors from '../../../colors.json'
 
 const Login = ({ navigation }) => {
-
     return (
-
-        <SafeAreaView style={{ flex: 1, justifyContent: 'space-around' }}>
-            <View
-                style={{}}
-            >
+        <Wrapper>
+            <View style={{
+                flex: 2
+            }}/>
+            <View style={{
+                flex: 3
+            }}>
                 <Input
-                    label='name user'
+                    label='User Name'
                 />
                 <Input
                     label='Password'
-
                 />
                 <CheckBox
                     title='Remember email'
@@ -28,27 +28,35 @@ const Login = ({ navigation }) => {
                     uncheckedColor='gray'
                     textStyle={{ color: 'white', }}
                     checked={false}
+                    containerStyle={{
+                        backgroundColor: 'rgba(0,0,0,0)',
+                        borderWidth: 0
+                    }}
                     onPress={() => console.log('click')}
+                />
+                <Icon
+                    name='fingerprint'
+                    size={40}
+                    color={colors.MAINTEXT}
+                    onPress={() => console.log('hello')} 
                 />
                 <Button
                     title='Log in'
+                    type="solid"
                     onPress={() => console.log('click')}
                 />
                 <Button
-                    title='sign up'
+                    title='Sign Up'
+                    type="solid"
                     onPress={() => navigation.navigate('sign up')}
                 />
                 <Button
-                    title='forgot password'
+                    title='Forgot Password'
+                    type="solid"
                     onPress={() => navigation.navigate('forgot password')}
                 />
             </View>
-
-        </SafeAreaView>
-
+        </Wrapper>
     )
-
-
-
 }
 export default Login
