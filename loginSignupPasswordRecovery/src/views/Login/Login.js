@@ -9,10 +9,10 @@ const Login = ({ navigation }) => {
     return (
         <Wrapper>
             <View style={{
-                flex: 2
+                flex: 2,
             }}/>
             <View style={{
-                flex: 3
+                flex: 3,
             }}>
                 <Input
                     label='User Name'

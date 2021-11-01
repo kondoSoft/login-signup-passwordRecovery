@@ -3,7 +3,8 @@ import { Icon } from 'react-native-elements'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ThemeProvider } from 'react-native-elements';
+import { ThemeProvider } from 'react-native-elements'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 import Home from './src/views/Home/Home';
@@ -99,10 +100,12 @@ const MainStack = () => {
 
 const App = () => {
   const user = true
-  const Stack = !user ? MainStack : LoginStack
-  return <ThemeProvider theme={theme}>
-    <Stack/>
-  </ThemeProvider>
+  const Stack = user ? MainStack : LoginStack
+  return (
+    <ThemeProvider theme={theme}>
+        <Stack/>
+    </ThemeProvider>
+  )
 }
 
 
