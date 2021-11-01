@@ -1,9 +1,18 @@
 import React from "react"
 import { Input, Text } from 'react-native-elements'
 import { Button, View, SafeAreaView } from 'react-native'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+
 import Wrapper from "../../../common/Wrapper"
 
 const ForgotPassword = () => {
+
+    const Schema = Yup.object().shape({
+        email: Yup.string()
+            .email('Invalid email')
+            .required('please insert your email'),
+    })
 
     return (
         <Wrapper>
@@ -13,19 +22,33 @@ const ForgotPassword = () => {
             <View
                 style={{ flex: 3, justifyContent: 'space-evenly' }}
             >
-                <Text
-                 style={{paddingLeft:10}}
-                >please insert your email</Text>
-                <Input
-                    label='Password'
-                />
-                <Button
-                    title='Log in'
-                    onPress={() => console.log('click')}
-                />
+                <Formik
+                    initialValues={{ user: '', email: '', PhoneNumber: '', password: '', }}
+                    onSubmit={values => console.log(values)}
+                    validationSchema={Schema}
+                >
+                    {({ handleChange, handleSubmit, values, errors }) => (
+                        <>
+                            <Input
+                                label='Email'
+                                onChangeText={handleChange('email')}
+                                value={values.email}
+                            />
+                            <Text>{errors.email}</Text>
+                            <Button
+                                title='Log in'
+                                onPress={handleSubmit}
+                            />
+                        </>
+                    )}
+
+                </Formik>
                 <Text
                     style={{ textAlign: 'center' }}
-                >please check your email </Text>
+                >
+                    please check your email
+                </Text>
+
             </View>
         </Wrapper>
     )

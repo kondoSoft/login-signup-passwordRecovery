@@ -1,9 +1,27 @@
 import React from "react"
-import { Input } from 'react-native-elements'
-import { Button, View, SafeAreaView } from 'react-native'
+import { Input, Text } from 'react-native-elements'
+import { Button, View, } from 'react-native'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+
 import Wrapper from "../../../common/Wrapper"
 
 const SignUp = () => {
+    const Schema = Yup.object().shape({
+        user: Yup.string().required('Required'),
+        email: Yup.string()
+            .email('Invalid email')
+            .required('Required'),
+        PhoneNumber: Yup.string()
+            .min(10, 'Too Short!')
+            .required('Required'),
+        password: Yup.string()
+            .min(6, 'Too Short!')
+            .required('Required'),
+        verifyPassword: Yup.string()
+            .required()
+            .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    })
 
     return (
         <Wrapper>
@@ -11,28 +29,53 @@ const SignUp = () => {
                 flex: 1,
             }} />
             <View
-                style={{flex: 3}}
+                style={{ flex: 3 }}
             >
-                <Input
-                    label='User name'
-                />
-                <Input
-                    label='Email'
-                />
-                <Input
-                    label='Phone number'
-                />
-                <Input
-                    label='Password'
-                />
-                <Input
-                    label='Verify Password'
+                <Formik
+                    initialValues={{ user: '', email: '', PhoneNumber: '', password: '', verifyPassword: '' }}
+                    onSubmit={values => console.log(values)}
+                    validationSchema={Schema}
+                >
+                    {({ handleChange, handleSubmit, values, errors }) => (
+                        <>
+                            <Input
+                                label='User name'
+                                onChangeText={handleChange('user')}
+                                value={values.user}
+                            />
+                            <Text>{errors.user}</Text>
+                            <Input
+                                label='Email'
+                                onChangeText={handleChange('email')}
+                                value={values.email}
+                            />
+                            <Text>{errors.email}</Text>
+                            <Input
+                                label='Phone number'
+                                onChangeText={handleChange('PhoneNumber')}
+                                value={values.PhoneNumber}
+                            />
+                            <Text>{errors.PhoneNumber}</Text>
+                            <Input
+                                label='Password'
+                                onChangeText={handleChange('password')}
+                                value={values.password}
+                            />
+                            <Text>{errors.password}</Text>
+                            <Input
+                                label='Verify Password'
+                                onChangeText={handleChange('verifyPassword')}
+                                value={values.verifyPassword}
 
-                />
-                <Button
-                    title='Sign up'
-                    onPress={() => console.log('click')}
-                />
+                            />
+                            <Text>{errors.verifyPassword}</Text>
+                            <Button
+                                title='Sign up'
+                                onPress={handleSubmit}
+                            />
+                        </>
+                    )}
+                </Formik>
             </View>
         </Wrapper>
     )
