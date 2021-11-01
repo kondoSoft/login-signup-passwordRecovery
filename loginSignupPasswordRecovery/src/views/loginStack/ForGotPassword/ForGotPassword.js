@@ -1,7 +1,7 @@
 import React from "react"
 import { Input, Text } from 'react-native-elements'
 import { Button, View, SafeAreaView } from 'react-native'
-import Wrapper from "../../common/Wrapper"
+import Wrapper from "../../../common/Wrapper"
 
 const ForgotPassword = () => {
 

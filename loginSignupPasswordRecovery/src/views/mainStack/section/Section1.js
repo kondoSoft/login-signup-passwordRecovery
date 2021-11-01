@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from 'react-native-elements'
-import Wrapper from '../../common/Wrapper'
+import Wrapper from '../../../common/Wrapper'
 
 const Section1 = () => {
     return (

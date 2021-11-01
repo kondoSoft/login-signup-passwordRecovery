@@ -2,8 +2,8 @@ import React from "react"
 import { Input, CheckBox, Icon } from 'react-native-elements'
 import { Button, View } from 'react-native'
 
-import Wrapper from '../../common/Wrapper'
-import colors from '../../../colors.json'
+import Wrapper from '../../../common/Wrapper'
+import colors from '../../../../colors.json'
 
 const Login = ({ navigation }) => {
     return (

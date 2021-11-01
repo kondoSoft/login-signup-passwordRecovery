@@ -7,13 +7,13 @@ import { ThemeProvider } from 'react-native-elements'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
-import Home from './src/views/home/Home';
-import Section1 from './src/views/section/Section1'
-import Section2 from './src/views/section/Section2'
-import Section3 from './src/views/section/Section3'
-import ForGotPassword from './src/views/ForGotPassword/ForGotPassword'
-import Login from './src/views/Login/Login'
-import SignUp from './src/views/signUp/SignUp'
+import Home from './src/views/mainStack/home/Home';
+import Section1 from './src/views/mainStack/section/Section1'
+import Section2 from './src/views/mainStack/section/Section2'
+import Section3 from './src/views/mainStack/section/Section3'
+import ForGotPassword from './src/views/loginStack/ForGotPassword/ForGotPassword'
+import Login from './src/views/loginStack/Login/Login'
+import SignUp from './src/views/loginStack/signUp/SignUp'
 
 import colors from './colors.json'
 
