@@ -7,10 +7,15 @@ const ForgotPassword = () => {
 
     return (
         <Wrapper>
+            <View style={{
+                flex: 2,
+            }} />
             <View
-                style={{ }}
+                style={{ flex: 3, justifyContent: 'space-evenly' }}
             >
-                <Text>please insert your email</Text>
+                <Text
+                 style={{paddingLeft:10}}
+                >please insert your email</Text>
                 <Input
                     label='Password'
                 />
@@ -18,7 +23,9 @@ const ForgotPassword = () => {
                     title='Log in'
                     onPress={() => console.log('click')}
                 />
-                <Text>please check your email </Text>
+                <Text
+                    style={{ textAlign: 'center' }}
+                >please check your email </Text>
             </View>
         </Wrapper>
     )
