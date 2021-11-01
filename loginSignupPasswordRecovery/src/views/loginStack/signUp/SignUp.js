@@ -1,6 +1,6 @@
 import React from "react"
 import { Input, Text } from 'react-native-elements'
-import { Button, View, } from 'react-native'
+import { Button, View, StyleSheet } from 'react-native'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -13,8 +13,8 @@ const SignUp = () => {
             .email('Invalid email')
             .required('Required'),
         PhoneNumber: Yup.string()
-            .min(10, 'Too Short!')
-            .required('Required'),
+            .matches(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, 'Phone is not in correct format')
+            .required(),
         password: Yup.string()
             .min(6, 'Too Short!')
             .required('Required'),
@@ -29,7 +29,7 @@ const SignUp = () => {
                 flex: 1,
             }} />
             <View
-                style={{ flex: 3 }}
+                style={{ flex: 4 }}
             >
                 <Formik
                     initialValues={{ user: '', email: '', PhoneNumber: '', password: '', verifyPassword: '' }}
@@ -43,32 +43,32 @@ const SignUp = () => {
                                 onChangeText={handleChange('user')}
                                 value={values.user}
                             />
-                            <Text>{errors.user}</Text>
+                            <Text style={styles.textError}>{errors.user}</Text>
                             <Input
                                 label='Email'
                                 onChangeText={handleChange('email')}
                                 value={values.email}
                             />
-                            <Text>{errors.email}</Text>
+                            <Text style={styles.textError}>{errors.email}</Text>
                             <Input
                                 label='Phone number'
                                 onChangeText={handleChange('PhoneNumber')}
                                 value={values.PhoneNumber}
                             />
-                            <Text>{errors.PhoneNumber}</Text>
+                            <Text style={styles.textError}>{errors.PhoneNumber}</Text>
                             <Input
                                 label='Password'
                                 onChangeText={handleChange('password')}
                                 value={values.password}
                             />
-                            <Text>{errors.password}</Text>
+                            <Text style={styles.textError}>{errors.password}</Text>
                             <Input
                                 label='Verify Password'
                                 onChangeText={handleChange('verifyPassword')}
                                 value={values.verifyPassword}
 
                             />
-                            <Text>{errors.verifyPassword}</Text>
+                            <Text style={styles.textError}>{errors.verifyPassword}</Text>
                             <Button
                                 title='Sign up'
                                 onPress={handleSubmit}
@@ -80,4 +80,10 @@ const SignUp = () => {
         </Wrapper>
     )
 }
+const styles = StyleSheet.create({
+    textError: {
+        marginLeft: 10,
+        marginBottom: 20
+    }
+})
 export default SignUp

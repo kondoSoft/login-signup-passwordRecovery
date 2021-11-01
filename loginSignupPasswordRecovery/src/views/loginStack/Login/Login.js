@@ -1,6 +1,6 @@
 import React from "react"
 import { Input, CheckBox, Icon, Text } from 'react-native-elements'
-import { Button, View } from 'react-native'
+import { Button, View, StyleSheet } from 'react-native'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -23,7 +23,7 @@ const Login = ({ navigation }) => {
                 flex: 3,
             }}>
                 <Formik
-                    initialValues={{ user: '', password: '', rememberMe: true }}
+                    initialValues={{ user: '', password: '', rememberMe: false }}
                     onSubmit={values => console.log(values)}
                     validationSchema={Schema}
                 >
@@ -34,13 +34,13 @@ const Login = ({ navigation }) => {
                                 onChangeText={handleChange('user')}
                                 value={values.user}
                             />
-                            <Text>{errors.user}</Text>
+                            <Text style={styles.textError}>{errors.user}</Text>
                             <Input
                                 label='Password'
                                 onChangeText={handleChange('password')}
                                 value={values.password}
                             />
-                            <Text>{errors.password}</Text>
+                            <Text style={styles.textError} >{errors.password}</Text>
                             <CheckBox
                                 name='rememberMe'
                                 title='Remember email'
@@ -54,7 +54,6 @@ const Login = ({ navigation }) => {
                                     backgroundColor: 'rgba(0,0,0,0)',
                                     borderWidth: 0
                                 }}
-                                // onValueChange={()=> handleChange('rememberMe')}
                                 onPress={() => setFieldValue('rememberMe', !values.rememberMe)}
                             />
                             <Icon
@@ -85,5 +84,13 @@ const Login = ({ navigation }) => {
             </View>
         </Wrapper>
     )
+
 }
+const styles = StyleSheet.create({
+    textError: {
+        marginLeft: 10,
+        marginBottom: 20
+    }
+}) 
+
 export default Login

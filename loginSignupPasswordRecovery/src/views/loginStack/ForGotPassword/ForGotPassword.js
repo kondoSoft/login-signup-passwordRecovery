@@ -1,6 +1,6 @@
 import React from "react"
 import { Input, Text } from 'react-native-elements'
-import { Button, View, SafeAreaView } from 'react-native'
+import { Button, View, StyleSheet } from 'react-native'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
                                 onChangeText={handleChange('email')}
                                 value={values.email}
                             />
-                            <Text>{errors.email}</Text>
+                            <Text style={styles.textError}>{errors.email}</Text>
                             <Button
                                 title='Log in'
                                 onPress={handleSubmit}
@@ -53,4 +53,12 @@ const ForgotPassword = () => {
         </Wrapper>
     )
 }
+
+const styles = StyleSheet.create({
+    textError: {
+        marginLeft: 10,
+        marginBottom: 20
+    }
+})
+
 export default ForgotPassword
